@@ -29,7 +29,8 @@ export class SearchFieldComponent implements OnInit {
   onEnter(input: string): void {
     this.searchEngineService.getPhotos(input).subscribe(response => {
         this.results = response.body;
-        this.results.results.forEach(r => console.log(r));
+        // this.results.results.forEach(r => console.log(r.alt_description));
+        // this.results.results.forEach(r => console.log(r.urls.raw));
       }
     );
   }
