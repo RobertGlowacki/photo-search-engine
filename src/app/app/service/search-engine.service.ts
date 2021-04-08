@@ -33,11 +33,11 @@ export class SearchEngineService {
    *
    * @param input input typed by user
    */
-  getPhotos(input: string): Observable<any> {
+  getPhotos(input: string): Observable<HttpResponse<GetSearchResults>> {
     const headers: HttpHeaders = new HttpHeaders({Accept: 'application/json'});
-    this.httpClient.get(this.ENDPOINT_ADDRESS + this.CLIENT_ID + '&query=' + input.split(' ').join('%20'),
-      {headers, observe: 'response'}).subscribe(res => console.log(res.body));
-    return this.httpClient.get(this.ENDPOINT_ADDRESS + this.CLIENT_ID + '&query=' + input.split(' ').join('%20'),
+    // this.httpClient.get(this.ENDPOINT_ADDRESS + this.CLIENT_ID + '&query=' + input.split(' ').join('%20'),
+    //   {headers, observe: 'response'}).subscribe(res => console.log(res.body));
+    return this.httpClient.get<GetSearchResults>(this.ENDPOINT_ADDRESS + this.CLIENT_ID + '&query=' + input.split(' ').join('%20'),
       {headers, observe: 'response'});
   }
 

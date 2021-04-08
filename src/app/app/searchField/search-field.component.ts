@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
+import { GetSearchResults } from '../model/get-search-results';
 
 /**
  * Component containing search field.
@@ -11,6 +12,8 @@ import { SearchEngineService } from '../service/search-engine.service';
 })
 export class SearchFieldComponent implements OnInit {
 
+  results: GetSearchResults;
+
   /**
    * @param searchEngineService service providing search engine
    */
@@ -21,10 +24,14 @@ export class SearchFieldComponent implements OnInit {
   }
 
   /**
-   * On enter service is callled for get data.
+   * On key enter service is called for get data.
    */
   onEnter(input: string): void {
-    this.searchEngineService.getPhotos(input);
+    this.searchEngineService.getPhotos(input).subscribe(response => {
+        this.results = response.body;
+        console.log(this.results.results);
+      }
+    );
   }
 
 }
