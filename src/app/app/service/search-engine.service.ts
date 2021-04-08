@@ -28,13 +28,15 @@ export class SearchEngineService {
 
   /**
    * Method get result of search.
+   * If there is a space in input it is replaced by its UNICODE character.
    *
    * @param input input typed by user
    */
   getPhotos(input: string): Observable<any> {
-    console.log(this.ENDPOINT_ADDRESS + this.CLIENT_ID + '&query=' + input);
+    console.log(this.ENDPOINT_ADDRESS + this.CLIENT_ID + 'Q&query=' + input.split(' ').join('%20'));
     const headers: HttpHeaders = new HttpHeaders({Accept: 'application/json'});
-    return this.httpClient.get(this.ENDPOINT_ADDRESS + this.CLIENT_ID + 'Q&query=' + input, {headers, observe: 'response'});
+    return this.httpClient.get(this.ENDPOINT_ADDRESS + this.CLIENT_ID + 'Q&query=' + input.split(' ').join('%20'),
+      {headers, observe: 'response'});
   }
 
 }
