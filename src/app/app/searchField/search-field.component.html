@@ -2,5 +2,8 @@
   <span>Unsplash</span>
   <label for="searchFiled"></label>
   <!--    <i class="fa fa-search"></i>-->
-  <input #input class="inputField" id="searchFiled" type="text" value="Search free high-resolution photos" (keyup.enter)="onEnter(input.value)"/>
+  <input #input class="inputField" id="searchFiled" type="text" value="Search free high-resolution photos"
+         onfocus="this.value = this.value === 'Search free high-resolution photos' ? '' : this.value"
+         onblur="this.value = this.value === '' ? 'Search free high-resolution photos' : this.value"
+         (keyup.enter)="onEnter(input.value)"/>
 </div>
