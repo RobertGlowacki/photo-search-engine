@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { GetSearchResults } from '../model/get-search-results';
 
 /**
  * Service responsible for fetching data.
@@ -33,9 +34,10 @@ export class SearchEngineService {
    * @param input input typed by user
    */
   getPhotos(input: string): Observable<any> {
-    console.log(this.ENDPOINT_ADDRESS + this.CLIENT_ID + 'Q&query=' + input.split(' ').join('%20'));
     const headers: HttpHeaders = new HttpHeaders({Accept: 'application/json'});
-    return this.httpClient.get(this.ENDPOINT_ADDRESS + this.CLIENT_ID + 'Q&query=' + input.split(' ').join('%20'),
+    this.httpClient.get(this.ENDPOINT_ADDRESS + this.CLIENT_ID + '&query=' + input.split(' ').join('%20'),
+      {headers, observe: 'response'}).subscribe(res => console.log(res.body));
+    return this.httpClient.get(this.ENDPOINT_ADDRESS + this.CLIENT_ID + '&query=' + input.split(' ').join('%20'),
       {headers, observe: 'response'});
   }
 
