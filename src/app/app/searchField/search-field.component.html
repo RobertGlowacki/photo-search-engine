@@ -2,5 +2,5 @@
   <span>Unsplash</span>
   <label for="searchFiled"></label>
   <!--    <i class="fa fa-search"></i>-->
-  <input id="searchFiled" type="text" (keyup.enter)="onEnter()"/>
+  <input #input class="inputField" id="searchFiled" type="text" value="Search free high-resolution photos" (keyup.enter)="onEnter(input.value)"/>
 </div>

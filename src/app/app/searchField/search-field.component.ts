@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchEngineService } from '../search-engine.service';
+import { SearchEngineService } from '../service/search-engine.service';
 
+/**
+ * Component containing search field.
+ */
 @Component({
   selector: 'app-search-field',
   templateUrl: './search-field.component.html',
@@ -8,13 +11,20 @@ import { SearchEngineService } from '../search-engine.service';
 })
 export class SearchFieldComponent implements OnInit {
 
-  constructor(private searchEngineService: SearchEngineService) { }
+  /**
+   * @param searchEngineService service providing search engine
+   */
+  constructor(private searchEngineService: SearchEngineService) {
+  }
 
   ngOnInit(): void {
   }
 
-  onEnter(): void {
-   this.searchEngineService.getPhotos('polska');
+  /**
+   * On enter service is callled for get data.
+   */
+  onEnter(input: string): void {
+    this.searchEngineService.getPhotos(input);
   }
 
 }
