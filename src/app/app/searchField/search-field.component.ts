@@ -29,7 +29,7 @@ export class SearchFieldComponent implements OnInit {
   onEnter(input: string): void {
     this.searchEngineService.getPhotos(input).subscribe(response => {
         this.results = response.body;
-        console.log(this.results.results);
+        this.results.results.forEach(r => console.log(r));
       }
     );
   }

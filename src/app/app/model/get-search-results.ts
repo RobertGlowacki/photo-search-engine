@@ -3,7 +3,7 @@ import { GetSingleResult } from './get-single-result';
 /**
  * Model class for search result.
  */
-export class GetSearchResults {
+export interface GetSearchResults {
 
   /**
    * Total number of results.
@@ -11,7 +11,7 @@ export class GetSearchResults {
   total: number;
 
   /**
-   * Totoal number of pages.
+   * Total number of pages.
    */
   totalPages: number;
 
