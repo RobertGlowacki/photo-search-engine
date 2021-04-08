@@ -6,10 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'photo-search-engine';
 
-  onEnter(): void {
-    console.log('yes');
-  }
+  title = 'photo-search-engine';
 
 }

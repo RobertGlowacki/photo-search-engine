@@ -2,14 +2,3 @@
   height: 100vh;
   background: url("../assets/background.jpg") no-repeat;
 }
-
-.search-field {
-  position: relative;
-  top: 500px;
-  /*left: 1000px;*/
-}
-
-.search-field input {
-  width: 500px;
-  height: 40px;
-}
