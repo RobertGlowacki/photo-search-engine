@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchEngineService } from '../search-engine.service';
 
 @Component({
   selector: 'app-search-field',
@@ -7,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchFieldComponent implements OnInit {
 
-  constructor() { }
+  constructor(private searchEngineService: SearchEngineService) { }
 
   ngOnInit(): void {
   }
 
   onEnter(): void {
-    console.log('yes');
+   this.searchEngineService.getPhotos('polska');
   }
 
 }
