@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
 import { GetSearchResults } from '../model/get-search-results';
 import { Router } from '@angular/router';
@@ -17,6 +17,9 @@ export class SearchFieldComponent implements OnInit {
    * Result fetch form API.
    */
   results: GetSearchResults;
+
+  @Input()
+  isDisplayed: boolean;
 
   /**
    * @param searchEngineService service providing search engine.

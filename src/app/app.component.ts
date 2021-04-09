@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  title = 'photo-search-engine';
+  /**
+   * Condition whether component are displayed.
+   */
+  isDisplayed = false;
 
 }

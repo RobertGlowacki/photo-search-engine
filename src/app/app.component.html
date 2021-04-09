@@ -1,3 +1,4 @@
 <div class="main-wrapper">
-  <app-search-field></app-search-field>
+  <app-search-field *ngIf="isDisplayed" [isDisplayed]="isDisplayed"></app-search-field>
+  <app-result-display *ngIf="!isDisplayed"></app-result-display>
 </div>
