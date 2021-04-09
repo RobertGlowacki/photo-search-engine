@@ -1,12 +1,12 @@
 .search-field {
   position: absolute;
-  top: 500px;
-  left: 600px;
+  top: 400px;
+  left: 450px;
 }
 
 .search-field input {
-  width: 500px;
-  height: 40px;
+  width: 1000px;
+  height: 60px;
 }
 
 .input-field {
