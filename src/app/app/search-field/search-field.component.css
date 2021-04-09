@@ -1,7 +1,7 @@
 .search-field {
-  position: relative;
+  position: absolute;
   top: 500px;
-  /*left: 1000px;*/
+  left: 600px;
 }
 
 .search-field input {
@@ -9,6 +9,14 @@
   height: 40px;
 }
 
-.inputField {
-  color: grey;
+.input-field {
+  color: #808080;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.underline {
+  text-decoration: underline;
 }
