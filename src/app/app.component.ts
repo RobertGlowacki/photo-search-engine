@@ -10,6 +10,10 @@ export class AppComponent {
   /**
    * Condition whether component are displayed.
    */
-  isDisplayed = false;
+  isDisplayed = true;
+
+  change(value: boolean): void {
+    this.isDisplayed = value;
+  }
 
 }

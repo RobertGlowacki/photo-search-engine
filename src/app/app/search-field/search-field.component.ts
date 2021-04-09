@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
 import { GetSearchResults } from '../model/get-search-results';
-import { Router } from '@angular/router';
 
 /**
  * Component containing search field.
@@ -18,14 +17,13 @@ export class SearchFieldComponent implements OnInit {
    */
   results: GetSearchResults;
 
-  @Input()
-  isDisplayed: boolean;
+  @Output()
+  isDisplayed = new EventEmitter<boolean>();
 
   /**
    * @param searchEngineService service providing search engine.
-   * @param router service providing navigation among views.
    */
-  constructor(private searchEngineService: SearchEngineService, private router: Router) {
+  constructor(private searchEngineService: SearchEngineService) {
   }
 
   ngOnInit(): void {
@@ -40,7 +38,7 @@ export class SearchFieldComponent implements OnInit {
       // this.results.results.forEach(r => console.log(r.alt_description));
       // this.results.results.forEach(r => console.log(r.urls.raw));
     );
-    this.router.navigate(['result-component']);
+    this.isDisplayed.emit(false);
   }
 
 }
