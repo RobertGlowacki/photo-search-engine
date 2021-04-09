@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
 import { GetSearchResults } from '../model/get-search-results';
 
@@ -17,6 +17,9 @@ export class SearchFieldComponent implements OnInit {
    */
   results: GetSearchResults;
 
+  /**
+   * Event emitter which push value to parent component.
+   */
   @Output()
   isDisplayed = new EventEmitter<boolean>();
 
@@ -30,7 +33,7 @@ export class SearchFieldComponent implements OnInit {
   }
 
   /**
-   * On key enter service is called for get data.
+   * On key enter service is called for get data and changes state of isDisplayed property.
    */
   onEnter(input: string): void {
     this.searchEngineService.getPhotos(input).subscribe(response =>

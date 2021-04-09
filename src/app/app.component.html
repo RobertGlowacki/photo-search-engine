@@ -1,4 +1,4 @@
 <div class="main-wrapper">
-  <app-search-field *ngIf="isDisplayed" (isDisplayed)="change($event)"></app-search-field>
+  <app-search-display *ngIf="isDisplayed" (isDisplayed)="change($event)"></app-search-display>
   <app-result-display *ngIf="!isDisplayed"></app-result-display>
 </div>

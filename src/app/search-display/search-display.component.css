@@ -1,0 +1,5 @@
+.wrapper {
+  height: 100vh;
+  background: center no-repeat url("src/assets/background.jpg");
+  filter: grayscale(50%);
+}

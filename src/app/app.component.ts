@@ -12,6 +12,11 @@ export class AppComponent {
    */
   isDisplayed = true;
 
+  /**
+   * Method changes state of isDisplayed property.
+   *
+   * @param value boolean value from child component.
+   */
   change(value: boolean): void {
     this.isDisplayed = value;
   }
