@@ -1,22 +1,8 @@
-.search-field {
-  position: absolute;
-  top: 400px;
-  left: 450px;
-}
-
-.search-field input {
+input {
   width: 1000px;
   height: 60px;
 }
 
 .input-field {
   color: #808080;
-}
-
-.inline-block {
-  display: inline-block;
-}
-
-.underline {
-  text-decoration: underline;
 }

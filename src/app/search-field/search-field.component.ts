@@ -15,6 +15,7 @@ export class SearchFieldComponent implements OnInit {
   /**
    * Result fetch form API.
    */
+  @Output()
   results: GetSearchResults;
 
   /**
