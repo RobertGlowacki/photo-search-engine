@@ -5,7 +5,7 @@
       <span style="display: block">The internet's source of <span class="underline">freely-usable-images</span>.</span>
       <span>Powered by creators everywhere.</span>
     </p>
-    <app-search-field (isDisplayed)="change($event)"></app-search-field>
+    <app-search-field (isDisplayed)="emitDisplayCondition($event)" (resultsEmitter)="emitResults($event)"></app-search-field>
     <p>
       <span>Trending: flower, wallpapers, backgrounds, happy, love</span>
     </p>

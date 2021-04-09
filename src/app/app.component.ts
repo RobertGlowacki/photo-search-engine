@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GetSearchResultsResponse } from './model/get-search-results-response';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +13,19 @@ export class AppComponent {
    */
   isDisplayed = true;
 
+  results: GetSearchResultsResponse[];
+
   /**
    * Method changes state of isDisplayed property.
    *
    * @param value boolean value from child component.
    */
-  change(value: boolean): void {
+  changeDisplayCondition(value: boolean): void {
     this.isDisplayed = value;
+  }
+
+  another(value: GetSearchResultsResponse[]): void {
+    this.results = value;
   }
 
 }

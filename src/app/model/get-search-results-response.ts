@@ -3,7 +3,7 @@ import { GetSingleResult } from './get-single-result';
 /**
  * Model class for search result.
  */
-export interface GetSearchResults {
+export interface GetSearchResultsResponse {
 
   /**
    * Total number of results.

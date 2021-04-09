@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
-import { GetSearchResults } from '../model/get-search-results';
+import { GetSearchResultsResponse } from '../model/get-search-results-response';
 
 /**
  * Component displaying search field.
@@ -13,13 +13,18 @@ import { GetSearchResults } from '../model/get-search-results';
 export class SearchFieldComponent implements OnInit {
 
   /**
-   * Result fetch form API.
+   * Event emitter which push of results to parent component.
    */
   @Output()
-  results: GetSearchResults;
+  resultsEmitter = new EventEmitter<GetSearchResultsResponse[]>();
 
   /**
-   * Event emitter which push value to parent component.
+   * Result fetch form API.
+   */
+  results: GetSearchResultsResponse[] = [];
+
+  /**
+   * Event emitter which push value of isDisplayed property to parent component.
    */
   @Output()
   isDisplayed = new EventEmitter<boolean>();
@@ -34,15 +39,14 @@ export class SearchFieldComponent implements OnInit {
   }
 
   /**
-   * On key enter service is called for get data and changes state of isDisplayed property.
+   * On key enter service is called for data and emit values of properties.
    */
   onEnter(input: string): void {
-    this.searchEngineService.getPhotos(input).subscribe(response =>
-        this.results = response.body
-      // this.results.results.forEach(r => console.log(r.alt_description));
-      // this.results.results.forEach(r => console.log(r.urls.raw));
-    );
+    this.searchEngineService.getPhotos(input).subscribe(response => {
+      this.results.push(response.body);
+    });
     this.isDisplayed.emit(false);
+    this.resultsEmitter.emit(this.results);
   }
 
 }

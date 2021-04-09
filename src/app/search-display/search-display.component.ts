@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { GetSearchResultsResponse } from '../model/get-search-results-response';
 
 /**
  * Component displaying initial search area.
@@ -13,7 +14,8 @@ export class SearchDisplayComponent implements OnInit {
   @Output()
   isDisplayed = new EventEmitter<boolean>();
 
-  someValue: boolean;
+  @Output()
+  resultEmitter = new EventEmitter<GetSearchResultsResponse[]>();
 
   constructor() {
   }
@@ -21,9 +23,12 @@ export class SearchDisplayComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  change(value: boolean): void {
-    this.someValue = value;
-    this.isDisplayed.emit(this.someValue);
+  emitDisplayCondition(value: boolean): void {
+    this.isDisplayed.emit(value);
+  }
+
+  emitResults(value: GetSearchResultsResponse[]): void {
+    this.resultEmitter.emit(value);
   }
 
 }
