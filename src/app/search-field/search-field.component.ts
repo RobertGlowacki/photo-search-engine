@@ -3,7 +3,7 @@ import { SearchEngineService } from '../service/search-engine.service';
 import { GetSearchResults } from '../model/get-search-results';
 
 /**
- * Component containing search field.
+ * Component displaying search field.
  */
 @Component({
   selector: 'app-search-field',

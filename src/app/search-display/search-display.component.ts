@@ -1,5 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
+/**
+ * Component displaying initial search area.
+ */
 @Component({
   selector: 'app-search-display',
   templateUrl: './search-display.component.html',
@@ -16,7 +19,6 @@ export class SearchDisplayComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.isDisplayed);
   }
 
   change(value: boolean): void {
