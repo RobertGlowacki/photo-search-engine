@@ -4,17 +4,17 @@ import { Urls } from './urls';
 /**
  * Model class for single result.
  */
-export interface GetSingleResult {
+export class GetSingleResult {
 
   /**
    * Creation date.
    */
-  created_at: string;
+  createdAt: string;
 
   /**
    * Alternative description.
    */
-  alt_description: string;
+  altDescription: string;
 
   /**
    * User.

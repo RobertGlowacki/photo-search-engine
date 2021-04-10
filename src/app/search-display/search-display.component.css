@@ -2,6 +2,7 @@
   height: 100vh;
   background: center no-repeat url("src/assets/background.jpg");
   filter: grayscale(50%);
+  color: #ffffff;
 }
 
 .search-field {
@@ -16,4 +17,13 @@
 
 .underline {
   text-decoration: underline;
+}
+
+input {
+  width: 1000px;
+  height: 60px;
+}
+
+.input-field {
+  color: #808080;
 }

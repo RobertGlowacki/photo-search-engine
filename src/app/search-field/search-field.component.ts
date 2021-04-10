@@ -16,12 +16,12 @@ export class SearchFieldComponent implements OnInit {
    * Event emitter which push of results to parent component.
    */
   @Output()
-  resultsEmitter = new EventEmitter<GetSearchResultsResponse[]>();
+  resultsEmitter = new EventEmitter<GetSearchResultsResponse>();
 
   /**
    * Result fetch form API.
    */
-  results: GetSearchResultsResponse[] = [];
+  results: GetSearchResultsResponse;
 
   /**
    * Event emitter which push value of isDisplayed property to parent component.
@@ -41,12 +41,13 @@ export class SearchFieldComponent implements OnInit {
   /**
    * On key enter service is called for data and emit values of properties.
    */
-  onEnter(input: string): void {
-    this.searchEngineService.getPhotos(input).subscribe(response => {
-      this.results.push(response.body);
+  onKeyEnter(input: string): void {
+    this.searchEngineService.getResponse(input).subscribe(response => {
+      this.results = (response.body);
+      this.resultsEmitter.emit(response.body);
+      // console.log(response.body);
     });
     this.isDisplayed.emit(false);
-    this.resultsEmitter.emit(this.results);
   }
 
 }

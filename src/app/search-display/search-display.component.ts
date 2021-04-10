@@ -15,7 +15,9 @@ export class SearchDisplayComponent implements OnInit {
   isDisplayed = new EventEmitter<boolean>();
 
   @Output()
-  resultEmitter = new EventEmitter<GetSearchResultsResponse[]>();
+  resultEmitter = new EventEmitter<GetSearchResultsResponse>();
+
+  r: GetSearchResultsResponse;
 
   constructor() {
   }
@@ -27,7 +29,7 @@ export class SearchDisplayComponent implements OnInit {
     this.isDisplayed.emit(value);
   }
 
-  emitResults(value: GetSearchResultsResponse[]): void {
+  emitResults(value: GetSearchResultsResponse): void {
     this.resultEmitter.emit(value);
   }
 

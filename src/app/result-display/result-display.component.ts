@@ -9,14 +9,12 @@ import { GetSearchResultsResponse } from '../model/get-search-results-response';
 export class ResultDisplayComponent implements OnInit {
 
   @Input()
-  results: GetSearchResultsResponse[];
+  results: GetSearchResultsResponse;
 
-  single: number;
-
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
-    this.results.forEach(val => this.single = val.total);
   }
 
 }

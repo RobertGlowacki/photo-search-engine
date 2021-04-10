@@ -13,7 +13,7 @@ export class AppComponent {
    */
   isDisplayed = true;
 
-  results: GetSearchResultsResponse[];
+  results: GetSearchResultsResponse;
 
   /**
    * Method changes state of isDisplayed property.
@@ -24,7 +24,7 @@ export class AppComponent {
     this.isDisplayed = value;
   }
 
-  another(value: GetSearchResultsResponse[]): void {
+  another(value: GetSearchResultsResponse): void {
     this.results = value;
   }
 
