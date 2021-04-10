@@ -43,9 +43,8 @@ export class SearchFieldComponent implements OnInit {
    */
   onKeyEnter(input: string): void {
     this.searchEngineService.getResponse(input).subscribe(response => {
-      this.results = (response.body);
-      this.resultsEmitter.emit(response.body);
-      // console.log(response.body);
+      this.results = response.body;
+      this.resultsEmitter.emit(this.results);
     });
     this.isDisplayed.emit(false);
   }

@@ -17,7 +17,7 @@ export class SearchDisplayComponent implements OnInit {
   @Output()
   resultEmitter = new EventEmitter<GetSearchResultsResponse>();
 
-  r: GetSearchResultsResponse;
+  value: GetSearchResultsResponse;
 
   constructor() {
   }
@@ -30,7 +30,7 @@ export class SearchDisplayComponent implements OnInit {
   }
 
   emitResults(value: GetSearchResultsResponse): void {
-    this.resultEmitter.emit(value);
+    this.value = value;
   }
 
 }

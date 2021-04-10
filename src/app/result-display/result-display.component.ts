@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { GetSearchResultsResponse } from '../model/get-search-results-response';
+import { Component, OnInit } from '@angular/core';
+import { SearchEngineService } from '../service/search-engine.service';
 
 @Component({
   selector: 'app-result-display',
@@ -8,13 +8,11 @@ import { GetSearchResultsResponse } from '../model/get-search-results-response';
 })
 export class ResultDisplayComponent implements OnInit {
 
-  @Input()
-  results: GetSearchResultsResponse;
-
-  constructor() {
+  constructor(private searchEngineService: SearchEngineService) {
   }
 
   ngOnInit(): void {
+
   }
 
 }
