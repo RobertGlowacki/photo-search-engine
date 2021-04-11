@@ -29,7 +29,7 @@ export class SearchEngineService {
   }
 
   /**
-   * Method get result of search.
+   * Method gets result of search.
    * If there is a space in input it is replaced by its UNICODE character.
    *
    * @param input input typed by user
@@ -42,7 +42,8 @@ export class SearchEngineService {
   }
 
   /**
-   * The method gets the auto-complete keyword suggestions.
+   * Method gets the auto-complete keyword suggestions.
+   * If there is a space in input it is replaced by its UNICODE character.
    *
    * @param input input typed by user
    */

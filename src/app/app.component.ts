@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+/**
+ * Aggregation component of application..
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,6 +15,9 @@ export class AppComponent {
    */
   isDisplayed = true;
 
+  /**
+   * Input value typed by user.
+   */
   input: string;
 
   /**
@@ -23,6 +29,11 @@ export class AppComponent {
     this.isDisplayed = value;
   }
 
+  /**
+   * Method pass value of input to child component.
+   *
+   * @param value value typed by user
+   */
   emitInputValue(value: string): void {
     this.input = value;
   }

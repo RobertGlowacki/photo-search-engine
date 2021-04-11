@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
+import { FormControl } from '@angular/forms';
 
 /**
  * Component displaying search field.
@@ -23,6 +24,16 @@ export class SearchFieldComponent implements OnInit {
   @Output()
   isDisplayed = new EventEmitter<boolean>();
 
+  /**
+   * List of autocomplete options.
+   */
+  autocomplete: string[] = [];
+
+  formControl = new FormControl();
+
+  /**
+   * @param searchEngineService service providing
+   */
   constructor(private searchEngineService: SearchEngineService) {
   }
 
@@ -37,9 +48,17 @@ export class SearchFieldComponent implements OnInit {
     this.inputEmitter.emit(input);
   }
 
+  /**
+   * Get list of auto-complete keyword suggestions.
+   *
+   * @param input input typed by user
+   */
   getKeywords(input: string): void {
+    console.log(input.length);
     if (input.length >= 3) {
-      this.searchEngineService.getAutocompleteKeywords(input).subscribe(response => response.body.autocomplete.map(result => console.log(result.query)));
+      this.searchEngineService.getAutocompleteKeywords(input).subscribe(response =>
+        response.body.autocomplete.map(result => this.autocomplete.push(result.query)));
+      this.autocomplete = [];
     }
   }
 
