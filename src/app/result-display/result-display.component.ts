@@ -45,7 +45,7 @@ export class ResultDisplayComponent implements OnInit {
    * @param data data
    */
   showDetails(data: GetSingleResult): void {
-    this.matDialog.open(ResultDetailsComponent, this.dialogConfig(data, ['result-details']));
+    this.matDialog.open(ResultDetailsComponent, this.dialogConfig(data, ['dialog']));
   }
 
   /**
@@ -56,7 +56,7 @@ export class ResultDisplayComponent implements OnInit {
    */
   private dialogConfig(data, panelClass): MatDialogConfig {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.data = data;
     dialogConfig.panelClass = panelClass;

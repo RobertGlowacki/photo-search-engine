@@ -1,7 +1,7 @@
 <div class="wrapper-result">
   <app-search-field></app-search-field>
   <section>
-    <div class="display-content" style="display: inline-block" *ngFor="let result of results">
+    <div class="display-content" *ngFor="let result of results">
       <div>
         <img (click)="showDetails(result)" src="{{result.urls.small}}" alt="{{result.alt_description}}">
       </div>

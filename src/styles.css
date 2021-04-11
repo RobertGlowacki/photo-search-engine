@@ -1,3 +1,5 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 * {
   margin: 0;
   padding: 0;
@@ -17,4 +19,8 @@ span {
 .display-inline::after {
   content: "\a";
   white-space: pre;
+}
+
+.dialog {
+  position: relative !important;
 }

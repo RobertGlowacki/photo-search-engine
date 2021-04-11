@@ -13,8 +13,7 @@
   display: block;
 }
 
-::ng-deep .result-details {
-  position: relative !important;
-  width: 70vw;
-  height: 60vh;
+::ng-deep .dialog {
+  width: 80vw;
+  height: 80vh;
 }
