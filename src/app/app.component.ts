@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { GetSearchResultsResponse } from './model/get-search-results-response';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +12,7 @@ export class AppComponent {
    */
   isDisplayed = true;
 
-  results: string;
+  input: string;
 
   /**
    * Method changes state of isDisplayed property.
@@ -25,7 +24,7 @@ export class AppComponent {
   }
 
   emitInputValue(value: string): void {
-    this.results = value;
+    this.input = value;
   }
 
 }
