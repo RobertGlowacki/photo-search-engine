@@ -27,7 +27,7 @@ export class ResultDisplayComponent implements OnInit {
 
   /**
    * @param searchEngineService service providing data from API
-   * @param matDialog matDialog
+   * @param matDialog Mat Dialog pop up
    */
   constructor(private searchEngineService: SearchEngineService, private matDialog: MatDialog) {
   }
@@ -40,11 +40,12 @@ export class ResultDisplayComponent implements OnInit {
   }
 
   /**
-   * Open dialog
+   * Open dialog with single result data.
+   *
    * @param data data
    */
-  showDetails(data): void {
-    this.matDialog.open(ResultDetailsComponent, this.dialogConfig(data, 'result-details'));
+  showDetails(data: GetSingleResult): void {
+    this.matDialog.open(ResultDetailsComponent, this.dialogConfig(data, ['result-details']));
   }
 
   /**

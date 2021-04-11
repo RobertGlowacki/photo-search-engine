@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { GetSingleResult } from '../model/get-single-result';
 
 /**
  * Component displaying single result.
@@ -10,9 +12,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) private _input: GetSingleResult) {
+  }
 
   ngOnInit(): void {
+  }
+
+  get input(): GetSingleResult {
+    return this._input;
   }
 
 }

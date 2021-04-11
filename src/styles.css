@@ -13,3 +13,8 @@ h1 {
 span {
   line-height: 3em;
 }
+
+.display-inline::after {
+  content: "\a";
+  white-space: pre;
+}
