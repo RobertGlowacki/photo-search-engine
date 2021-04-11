@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Component displaying single result.
+ */
 @Component({
   selector: 'app-result-details',
   templateUrl: './result-details.component.html',

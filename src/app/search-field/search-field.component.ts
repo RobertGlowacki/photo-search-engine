@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { SearchEngineService } from '../service/search-engine.service';
 
 /**
  * Component displaying search field.
@@ -12,7 +11,7 @@ import { SearchEngineService } from '../service/search-engine.service';
 export class SearchFieldComponent implements OnInit {
 
   /**
-   * Event emitter which push of results to parent component.
+   * Event emitter which push of input to parent component.
    */
   @Output()
   inputEmitter = new EventEmitter<string>();
@@ -23,17 +22,14 @@ export class SearchFieldComponent implements OnInit {
   @Output()
   isDisplayed = new EventEmitter<boolean>();
 
-  /**
-   * @param searchEngineService service providing search engine.
-   */
-  constructor(private searchEngineService: SearchEngineService) {
+  constructor() {
   }
 
   ngOnInit(): void {
   }
 
   /**
-   * On key enter service is called for data and emit values of properties.
+   * On key enter emit values of properties.
    */
   onKeyEnter(input: string): void {
     this.isDisplayed.emit(false);

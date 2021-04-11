@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { GetSearchResultsResponse } from '../model/get-search-results-response';
 
 /**
@@ -38,5 +38,7 @@ export class SearchEngineService {
     return this.httpClient.get<GetSearchResultsResponse>(this.ENDPOINT_ADDRESS + this.CLIENT_ID + '&query=' + input.split(' ').join('%20'),
       {headers, observe: 'response'});
   }
+
+
 
 }
