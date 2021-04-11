@@ -1,8 +1,8 @@
 <app-search-field></app-search-field>
 <section>
-  <div *ngFor="let result of results">
+  <div class="display-content" style="display: inline-block" *ngFor="let result of results">
     <div>
-      <img src="{{result.urls.small}}" alt="">
+      <img src="{{result.urls.small}}" alt="{{result.alt_description}}">
     </div>
   </div>
 </section>

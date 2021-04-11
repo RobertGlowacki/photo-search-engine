@@ -1,7 +1,7 @@
 /**
  * Model class for user.
  */
-export class User {
+export interface User {
 
   /**
    * User name in {@code "firstName lastName"}

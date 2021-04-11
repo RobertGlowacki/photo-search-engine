@@ -4,7 +4,7 @@ import { Urls } from './urls';
 /**
  * Model class for single result.
  */
-export class GetSingleResult {
+export interface GetSingleResult {
 
   /**
    * Creation date.
@@ -25,5 +25,10 @@ export class GetSingleResult {
    * Urls links.
    */
   urls: Urls;
+
+  /**
+   * Alternative text of image.
+   */
+  alt_description: string;
 
 }

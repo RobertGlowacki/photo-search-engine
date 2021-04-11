@@ -1,7 +1,7 @@
 /**
  * Model class for urls links.
  */
-export class Urls {
+export interface Urls {
 
   /**
    * Link for raw data.
