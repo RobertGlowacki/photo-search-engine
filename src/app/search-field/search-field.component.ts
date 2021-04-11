@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
-import { debounceTime, map } from 'rxjs/operators';
+import { SearchEngineService } from '../service/search-engine.service';
 
 /**
  * Component displaying search field.
@@ -23,19 +22,8 @@ export class SearchFieldComponent implements OnInit {
    */
   @Output()
   isDisplayed = new EventEmitter<boolean>();
-  hostRacers = ['one', 'twotwo', 'thrrrreeee'];
 
-  hostsRacers = (text$: Observable<string>) =>
-    text$.pipe(
-      debounceTime(200),
-      map(term =>
-        term === '' ? [] : this.hostRacers
-          .filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)
-          .slice(0, 10)
-      )
-    )
-
-  constructor() {
+  constructor(private searchEngineService: SearchEngineService) {
   }
 
   ngOnInit(): void {
@@ -47,6 +35,12 @@ export class SearchFieldComponent implements OnInit {
   onKeyEnter(input: string): void {
     this.isDisplayed.emit(false);
     this.inputEmitter.emit(input);
+  }
+
+  getKeywords(input: string): void {
+    if (input.length >= 3) {
+      this.searchEngineService.getAutocompleteKeywords(input).subscribe(response => response.body.autocomplete.map(result => console.log(result.query)));
+    }
   }
 
 }

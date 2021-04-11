@@ -4,5 +4,5 @@
   <input #input id="searchFiled" type="text" value="Search free high-resolution photos"
          onfocus="this.value = this.value === 'Search free high-resolution photos' ? '' : this.value"
          onblur="this.value = this.value === '' ? 'Search free high-resolution photos' : this.value"
-         (keyup.enter)="onKeyEnter(input.value)" [ngbTypeahead]="hostsRacers"/>
+         (keyup.enter)="onKeyEnter(input.value)" (keypress)="getKeywords(input.value)" />
 </div>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GetSearchResultsResponse } from '../model/get-search-results-response';
+import { GetAutocompleteResponse } from '../model/getAutocompleteResponse';
 
 /**
  * Service responsible for fetching data.
@@ -35,10 +36,21 @@ export class SearchEngineService {
    */
   getResponse(input: string): Observable<HttpResponse<GetSearchResultsResponse>> {
     const headers: HttpHeaders = new HttpHeaders({Accept: 'application/json'});
-    return this.httpClient.get<GetSearchResultsResponse>(this.ENDPOINT_ADDRESS + this.CLIENT_ID + '&query=' + input.split(' ').join('%20'),
-      {headers, observe: 'response'});
+    return this.httpClient
+      .get<GetSearchResultsResponse>(`${this.ENDPOINT_ADDRESS + this.CLIENT_ID}&query=${input.split(' ').join('%20')}`,
+        {headers, observe: 'response'});
   }
 
-
+  /**
+   * The method gets the auto-complete keyword suggestions.
+   *
+   * @param input input typed by user
+   */
+  getAutocompleteKeywords(input: string): Observable<HttpResponse<GetAutocompleteResponse>> {
+    const headers: HttpHeaders = new HttpHeaders({Accept: 'application/json'});
+    return this.httpClient
+      .get<GetAutocompleteResponse>(`https://cors-anywhere.herokuapp.com/https://unsplash.com/nautocomplete/${input.split(' ').join('%20')}`,
+        {headers, observe: 'response'});
+  }
 
 }
