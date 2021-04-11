@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { GetSearchResultsResponse } from '../model/get-search-results-response';
 
 /**
  * Component displaying initial search area.
@@ -15,9 +14,7 @@ export class SearchDisplayComponent implements OnInit {
   isDisplayed = new EventEmitter<boolean>();
 
   @Output()
-  resultEmitter = new EventEmitter<GetSearchResultsResponse>();
-
-  value: GetSearchResultsResponse;
+  inputEmitter = new EventEmitter<string>();
 
   constructor() {
   }
@@ -29,8 +26,8 @@ export class SearchDisplayComponent implements OnInit {
     this.isDisplayed.emit(value);
   }
 
-  emitResults(value: GetSearchResultsResponse): void {
-    this.value = value;
+  emitInputValue(value: string): void {
+    this.inputEmitter.emit(value);
   }
 
 }

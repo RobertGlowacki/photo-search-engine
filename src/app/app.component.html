@@ -1,4 +1,5 @@
 <div class="main-wrapper">
-  <app-search-display *ngIf="isDisplayed" (isDisplayed)="changeDisplayCondition($event)" (resultEmitter)="another($event)"></app-search-display>
-  <app-result-display *ngIf="!isDisplayed"></app-result-display>
+  <app-search-display *ngIf="isDisplayed" (isDisplayed)="changeDisplayCondition($event)"
+                      (inputEmitter)="emitInputValue($event)"></app-search-display>
+  <app-result-display *ngIf="!isDisplayed" [inputValue]="results"></app-result-display>
 </div>

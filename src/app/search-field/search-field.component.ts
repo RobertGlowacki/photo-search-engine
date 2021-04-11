@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
-import { GetSearchResultsResponse } from '../model/get-search-results-response';
 
 /**
  * Component displaying search field.
@@ -16,12 +15,7 @@ export class SearchFieldComponent implements OnInit {
    * Event emitter which push of results to parent component.
    */
   @Output()
-  resultsEmitter = new EventEmitter<GetSearchResultsResponse>();
-
-  /**
-   * Result fetch form API.
-   */
-  results: GetSearchResultsResponse;
+  inputEmitter = new EventEmitter<string>();
 
   /**
    * Event emitter which push value of isDisplayed property to parent component.
@@ -42,11 +36,8 @@ export class SearchFieldComponent implements OnInit {
    * On key enter service is called for data and emit values of properties.
    */
   onKeyEnter(input: string): void {
-    this.searchEngineService.getResponse(input).subscribe(response => {
-      this.results = response.body;
-      this.resultsEmitter.emit(this.results);
-    });
     this.isDisplayed.emit(false);
+    this.inputEmitter.emit(input);
   }
 
 }
