@@ -9,12 +9,7 @@ export interface GetSingleResult {
   /**
    * Creation date.
    */
-  createdAt: string;
-
-  /**
-   * Alternative description.
-   */
-  altDescription: string;
+  created_at: string;
 
   /**
    * User.

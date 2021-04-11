@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
+import { debounceTime, map } from 'rxjs/operators';
 
 /**
  * Component displaying search field.
@@ -21,6 +23,17 @@ export class SearchFieldComponent implements OnInit {
    */
   @Output()
   isDisplayed = new EventEmitter<boolean>();
+  hostRacers = ['one', 'twotwo', 'thrrrreeee'];
+
+  hostsRacers = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      map(term =>
+        term === '' ? [] : this.hostRacers
+          .filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)
+          .slice(0, 10)
+      )
+    )
 
   constructor() {
   }

@@ -1,5 +1,7 @@
 <div>
-  <span>{{input.user.username}}</span>
-  <span>{{input.createdAt | date: 'yyyy'}}</span>
+  <p class="display-inline">
+    <span>{{input.user.username}} </span>
+    <span>{{input.created_at | date: 'MMMM yyyy'}}</span>
+  </p>
   <img src="{{input.urls.regular}}" alt="{{input.alt_description}}">
 </div>

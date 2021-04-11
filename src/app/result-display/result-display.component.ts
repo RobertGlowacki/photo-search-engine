@@ -36,6 +36,8 @@ export class ResultDisplayComponent implements OnInit {
    * On init data is fetch from Unsplash API.
    */
   ngOnInit(): void {
+    this.searchEngineService.getResponse(this.inputValue).subscribe(response => console.log(response.body));
+
     this.searchEngineService.getResponse(this.inputValue).subscribe(response => this.results = response.body.results);
   }
 
