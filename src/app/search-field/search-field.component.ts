@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
+import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 
 /**
  * Component displaying search field.
@@ -28,7 +29,10 @@ export class SearchFieldComponent implements OnInit {
    */
   autocompleteOptions: string[] = [];
 
-
+  /**
+   * Fontawesome icon.
+   */
+  faSearch = faSearch;
 
   /**
    * @param searchEngineService service providing
@@ -59,7 +63,6 @@ export class SearchFieldComponent implements OnInit {
     if (keywordNumber === 8 || keywordNumber === 46) {
       length -= 1;
     }
-    console.log(length);
     if (length >= 2) {
       this.searchEngineService.getAutocompleteKeywords(input).subscribe(response =>
         response.body.autocomplete.map(result => this.autocompleteOptions.push(result.query)));

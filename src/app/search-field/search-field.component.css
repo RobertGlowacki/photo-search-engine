@@ -1,7 +1,19 @@
+.input-container {
+  position: relative;
+}
+
 input {
   width: 1000px;
   height: 60px;
+  padding-left: 30px;
   color: #808080;
+}
+
+.input-container fa-icon {
+  position: absolute;
+  color: #1a1d1f;
+  top: 20px;
+  left: 15px;
 }
 
 @media only screen and (max-width: 1440px) {
