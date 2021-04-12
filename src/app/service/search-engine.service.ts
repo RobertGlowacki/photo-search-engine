@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GetSearchResultsResponse } from '../model/get-search-results-response';
-import { GetAutocompleteResponse } from '../model/getAutocompleteResponse';
+import { GetAutocompleteResponse } from '../model/get-autocomplete-response';
 
 /**
  * Service responsible for fetching data.
@@ -50,8 +50,10 @@ export class SearchEngineService {
   getAutocompleteKeywords(input: string): Observable<HttpResponse<GetAutocompleteResponse>> {
     const headers: HttpHeaders = new HttpHeaders({Accept: 'application/json'});
     return this.httpClient
-      .get<GetAutocompleteResponse>(`https://cors-anywhere.herokuapp.com/https://unsplash.com/nautocomplete/${input.split(' ').join('%20')}`,
+      .get<GetAutocompleteResponse>(`https://cors-anywhere.herokuapp.com/unsplash.com/nautocomplete/${input.split(' ').join('%20')}`,
         {headers, observe: 'response'});
+    // return this.httpClient.get<GetAutocompleteResponse>(`https://powerful-plateau-57612.herokuapp.com/unsplash.com/nautocomplete/${input.split(' ').join('%20')}`,
+    //     {headers, observe: 'response'});
   }
 
 }

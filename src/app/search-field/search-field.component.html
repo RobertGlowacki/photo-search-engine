@@ -1,29 +1,16 @@
-<!--<div>-->
-<!--  <form>-->
-<!--    <mat-form-field class="input-field">-->
-<!--      &lt;!&ndash;  <i class="fa fa-search"></i>&ndash;&gt;-->
-<!--      <label for="searchFiled"></label>-->
-<!--      <input #input id="searchFiled" type="text" value="Search free high-resolution photos"-->
-<!--             matInput-->
-<!--             [formControl]="formControl"-->
-<!--             [matAutocomplete]="auto"-->
-<!--             onfocus="this.value = this.value === 'Search free high-resolution photos' ? '' : this.value"-->
-<!--             onblur="this.value = this.value === '' ? 'Search free high-resolution photos' : this.value"-->
-<!--             (keyup.enter)="onKeyEnter(input.value)" (keydown)="getKeywords(input.value)"/>-->
-<!--    </mat-form-field>-->
-<!--    <mat-autocomplete #auto="matAutocomplete">-->
-<!--      <mat-option *ngFor="let option of autocomplete" [value]="option">-->
-<!--        {{option}}-->
-<!--      </mat-option>-->
-<!--    </mat-autocomplete>-->
-<!--  </form>-->
-<!--</div>-->
-
 <div>
+  <i class="fa fa-search" aria-hidden="true"></i>
+
   <label for="searchFiled"></label>
-  <!--  <i class="fa fa-search"></i>-->
   <input #input id="searchFiled" type="text" value="Search free high-resolution photos"
+         [matAutocomplete]="auto"
          onfocus="this.value = this.value === 'Search free high-resolution photos' ? '' : this.value"
          onblur="this.value = this.value === '' ? 'Search free high-resolution photos' : this.value"
-         (keyup.enter)="onKeyEnter(input.value)" (keydown)="getKeywords(input.value)" />
+         (keyup.enter)="onKeyEnter(input.value)" (keyup)="getKeywords(input.value, $event.keyCode)"/>
+
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of autocompleteOptions" [value]="option">
+      {{option}}
+    </mat-option>
+  </mat-autocomplete>
 </div>

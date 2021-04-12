@@ -1,7 +1,6 @@
 .wrapper-search {
   height: 100vh;
   background: center no-repeat url("src/assets/background.jpg");
-  background-size: contain;
   filter: grayscale(75%);
   color: #ffffff;
 }

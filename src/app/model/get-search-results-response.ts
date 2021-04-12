@@ -1,7 +1,7 @@
 import { GetSingleResult } from './get-single-result';
 
 /**
- * Model class for search result.
+ * Model class for search results.
  */
 export interface GetSearchResultsResponse {
 
@@ -16,7 +16,7 @@ export interface GetSearchResultsResponse {
   totalPages: number;
 
   /**
-   * List fo single result.
+   * Array of single result.
    */
   results: GetSingleResult[];
 

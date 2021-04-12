@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
-import { FormControl } from '@angular/forms';
 
 /**
  * Component displaying search field.
@@ -27,9 +26,9 @@ export class SearchFieldComponent implements OnInit {
   /**
    * List of autocomplete options.
    */
-  autocomplete: string[] = [];
+  autocompleteOptions: string[] = [];
 
-  formControl = new FormControl();
+
 
   /**
    * @param searchEngineService service providing
@@ -50,16 +49,22 @@ export class SearchFieldComponent implements OnInit {
 
   /**
    * Get list of auto-complete keyword suggestions.
+   * Condition not to count delete and backspace as input length.
    *
    * @param input input typed by user
+   * @param keywordNumber keyword number
    */
-  getKeywords(input: string): void {
-    if (input.length >= 2) {
-      this.searchEngineService.getAutocompleteKeywords(input).subscribe(response =>
-        response.body.autocomplete.map(result => this.autocomplete.push(result.query)));
-      console.log(this.autocomplete);
+  getKeywords(input: string, keywordNumber: number): void {
+    let length = input.length;
+    if (keywordNumber === 8 || keywordNumber === 46) {
+      length -= 1;
     }
-    this.autocomplete = [];
+    console.log(length);
+    if (length >= 2) {
+      this.searchEngineService.getAutocompleteKeywords(input).subscribe(response =>
+        response.body.autocomplete.map(result => this.autocompleteOptions.push(result.query)));
+    }
+    this.autocompleteOptions = [];
   }
 
 }

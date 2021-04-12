@@ -12,8 +12,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -27,13 +27,12 @@ import { MatInputModule } from '@angular/material/input';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    FormsModule,
+    FontAwesomeModule,
     HttpClientModule,
     MatAutocompleteModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
