@@ -1,20 +1,29 @@
+<!--<div>-->
+<!--  <form>-->
+<!--    <mat-form-field class="input-field">-->
+<!--      &lt;!&ndash;  <i class="fa fa-search"></i>&ndash;&gt;-->
+<!--      <label for="searchFiled"></label>-->
+<!--      <input #input id="searchFiled" type="text" value="Search free high-resolution photos"-->
+<!--             matInput-->
+<!--             [formControl]="formControl"-->
+<!--             [matAutocomplete]="auto"-->
+<!--             onfocus="this.value = this.value === 'Search free high-resolution photos' ? '' : this.value"-->
+<!--             onblur="this.value = this.value === '' ? 'Search free high-resolution photos' : this.value"-->
+<!--             (keyup.enter)="onKeyEnter(input.value)" (keydown)="getKeywords(input.value)"/>-->
+<!--    </mat-form-field>-->
+<!--    <mat-autocomplete #auto="matAutocomplete">-->
+<!--      <mat-option *ngFor="let option of autocomplete" [value]="option">-->
+<!--        {{option}}-->
+<!--      </mat-option>-->
+<!--    </mat-autocomplete>-->
+<!--  </form>-->
+<!--</div>-->
+
 <div>
-  <form>
-    <mat-form-field>
-      <!--  <i class="fa fa-search"></i>-->
-      <label for="searchFiled"></label>
-      <input #input id="searchFiled" type="text" value="Search free high-resolution photos"
-             matInput
-             [formControl]="formControl"
-             [matAutocomplete]="auto"
-             onfocus="this.value = this.value === 'Search free high-resolution photos' ? '' : this.value"
-             onblur="this.value = this.value === '' ? 'Search free high-resolution photos' : this.value"
-             (keyup.enter)="onKeyEnter(input.value)" (keydown)="getKeywords(input.value)"/>
-    </mat-form-field>
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of autocomplete" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
-  </form>
+  <label for="searchFiled"></label>
+  <!--  <i class="fa fa-search"></i>-->
+  <input #input id="searchFiled" type="text" value="Search free high-resolution photos"
+         onfocus="this.value = this.value === 'Search free high-resolution photos' ? '' : this.value"
+         onblur="this.value = this.value === '' ? 'Search free high-resolution photos' : this.value"
+         (keyup.enter)="onKeyEnter(input.value)" (keydown)="getKeywords(input.value)" />
 </div>

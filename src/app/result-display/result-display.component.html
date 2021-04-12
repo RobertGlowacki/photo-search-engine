@@ -3,7 +3,8 @@
   <section>
     <div class="display-content" *ngFor="let result of results">
       <div>
-        <img (click)="showDetails(result)" src="{{result.urls.small}}" alt="{{result.alt_description}}">
+        <img (click)="showDetails(result)" src="{{result.urls.small}}"
+             alt="{{result.alt_description}}">
       </div>
     </div>
   </section>

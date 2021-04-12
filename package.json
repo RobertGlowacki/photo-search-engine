@@ -21,9 +21,11 @@
     "@angular/platform-browser": "~10.1.4",
     "@angular/platform-browser-dynamic": "~10.1.4",
     "@angular/router": "~10.1.4",
+    "angular-cli-ghpages": "^1.0.0-rc.1",
     "angular-material-autocomplete-list": "^1.1.0",
     "cors-anywhere": "^0.4.4",
     "rxjs": "~6.6.0",
+    "save-dev": "0.0.1-security",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

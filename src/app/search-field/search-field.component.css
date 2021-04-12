@@ -3,3 +3,10 @@ input {
   height: 60px;
   color: #808080;
 }
+
+@media only screen and (max-width: 1440px) {
+  input {
+    width: 800px;
+    height: 50px;
+  }
+}

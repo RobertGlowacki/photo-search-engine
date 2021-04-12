@@ -14,6 +14,20 @@
 }
 
 ::ng-deep .dialog {
-  width: 80vw;
+  width: 60vw;
   height: 80vh;
+}
+
+.grid-container {
+  display: flex;
+  /*grid-auto-rows: 50px;*/
+  /*grid-gap: 10px;*/
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+}
+
+.grid-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }

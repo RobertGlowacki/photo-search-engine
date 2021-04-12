@@ -54,12 +54,12 @@ export class SearchFieldComponent implements OnInit {
    * @param input input typed by user
    */
   getKeywords(input: string): void {
-    console.log(input.length);
-    if (input.length >= 3) {
+    if (input.length >= 2) {
       this.searchEngineService.getAutocompleteKeywords(input).subscribe(response =>
         response.body.autocomplete.map(result => this.autocomplete.push(result.query)));
-      this.autocomplete = [];
+      console.log(this.autocomplete);
     }
+    this.autocomplete = [];
   }
 
 }
