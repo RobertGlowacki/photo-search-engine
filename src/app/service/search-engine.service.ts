@@ -23,6 +23,11 @@ export class SearchEngineService {
   private readonly CLIENT_ID = 'client_id=9sDz5rlCnIvI6s_I4sYh3w6oldf60qxrsYqryev8ZsQ';
 
   /**
+   * Endpoint address for access keywords.
+   */
+  private readonly AUTOCOMPLETE_KEYWORDS_ADDRESS = 'https://secret-ocean-49799.herokuapp.com/https://unsplash.com/nautocomplete/';
+
+  /**
    * @param httpClient http client
    */
   constructor(private httpClient: HttpClient) {
@@ -50,7 +55,7 @@ export class SearchEngineService {
   getAutocompleteKeywords(input: string): Observable<HttpResponse<GetAutocompleteResponse>> {
     const headers: HttpHeaders = new HttpHeaders({Accept: 'application/json'});
     return this.httpClient
-      .get<GetAutocompleteResponse>(`https://secret-ocean-49799.herokuapp.com/https://unsplash.com/nautocomplete/${input.split(' ').join('%20')}`,
+      .get<GetAutocompleteResponse>(`${this.AUTOCOMPLETE_KEYWORDS_ADDRESS}${input.split(' ').join('%20')}`,
         {headers, observe: 'response'});
   }
 
