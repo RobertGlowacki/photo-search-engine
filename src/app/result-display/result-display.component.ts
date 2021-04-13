@@ -45,7 +45,9 @@ export class ResultDisplayComponent implements OnInit {
    * @param input new input
    */
   onNewSearch(input: string): string {
-    return this.inputValue = input;
+    this.inputValue = input;
+    this.ngOnInit();
+    return this.inputValue;
   }
 
   /**
