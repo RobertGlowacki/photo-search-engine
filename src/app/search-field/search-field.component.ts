@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 
@@ -42,9 +42,8 @@ export class SearchFieldComponent implements OnInit {
 
   /**
    * @param searchEngineService service providing fetched data
-   * @param cdr change detector ref
    */
-  constructor(private searchEngineService: SearchEngineService, private cdr: ChangeDetectorRef) {
+  constructor(private searchEngineService: SearchEngineService) {
   }
 
   ngOnInit(): void {
@@ -75,6 +74,14 @@ export class SearchFieldComponent implements OnInit {
         response.body.autocomplete.map(result => this.autocompleteOptions.push(result.query)));
     }
     this.autocompleteOptions = [];
+  }
+
+  /**
+   *
+   * @param $event event object from template
+   */
+  onSelectionChange($event: any): void {
+    this.onKeyEnter($event.source.value);
   }
 
 }
