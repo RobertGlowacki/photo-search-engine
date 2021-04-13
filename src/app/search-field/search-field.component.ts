@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 
@@ -41,9 +41,10 @@ export class SearchFieldComponent implements OnInit {
   inputValue: string;
 
   /**
-   * @param searchEngineService service providing
+   * @param searchEngineService service providing fetched data
+   * @param cdr change detector ref
    */
-  constructor(private searchEngineService: SearchEngineService) {
+  constructor(private searchEngineService: SearchEngineService, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -52,7 +53,7 @@ export class SearchFieldComponent implements OnInit {
   /**
    * On key enter emit values of properties.
    */
-  afterRefilling(input: string): void {
+  onKeyEnter(input: string): void {
     this.isDisplayed.emit(false);
     this.inputEmitter.emit(input);
   }

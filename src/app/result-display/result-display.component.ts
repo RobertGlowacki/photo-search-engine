@@ -40,6 +40,15 @@ export class ResultDisplayComponent implements OnInit {
   }
 
   /**
+   * Method updates view after new input is typed by user.
+   *
+   * @param input new input
+   */
+  onNewSearch(input: string): string {
+    return this.inputValue = input;
+  }
+
+  /**
    * Open dialog with single result data.
    *
    * @param data data

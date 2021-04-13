@@ -29,7 +29,7 @@ export class SearchDisplayComponent implements OnInit {
   }
 
   /**
-   * Emit value.
+   * Emit boolean value.
    *
    * @param value boolean value
    */

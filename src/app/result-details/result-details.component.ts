@@ -12,6 +12,9 @@ import { GetSingleResult } from '../model/get-single-result';
 })
 export class ResultDetailsComponent implements OnInit {
 
+  /**
+   * @param _input injected input
+   */
   constructor(@Inject(MAT_DIALOG_DATA) private _input: GetSingleResult) {
   }
 
