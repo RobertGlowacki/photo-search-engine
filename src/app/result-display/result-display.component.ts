@@ -23,7 +23,12 @@ export class ResultDisplayComponent implements OnInit {
   /**
    * Data fetched form Unsplash API.
    */
-  results: GetSingleResult[];
+  results: GetSingleResult[] = [];
+
+  /**
+   * Flag is response has any results.
+   */
+  hasNoResult = false;
 
   /**
    * @param searchEngineService service providing data from API
@@ -33,10 +38,17 @@ export class ResultDisplayComponent implements OnInit {
   }
 
   /**
-   * On init data is fetch from Unsplash API.
+   * On init data is fetch from Unsplash API. If no data is fetched some custom information occur.
    */
   ngOnInit(): void {
-    this.searchEngineService.getResponse(this.inputValue).subscribe(response => this.results = response.body.results);
+    this.searchEngineService.getResponse(this.inputValue).subscribe(response => this.results = response.body.results,
+      () => console.log('error'),
+      () => {
+        if (this.results.length === 0) {
+          this.hasNoResult = true;
+        }
+      }
+    );
   }
 
   /**

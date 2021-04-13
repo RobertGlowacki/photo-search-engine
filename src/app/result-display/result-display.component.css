@@ -21,3 +21,7 @@
 .header:first-letter {
   text-transform: capitalize;
 }
+
+.error {
+  color: #710505;
+}
