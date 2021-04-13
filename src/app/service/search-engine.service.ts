@@ -23,7 +23,7 @@ export class SearchEngineService {
   private readonly CLIENT_ID = 'client_id=9sDz5rlCnIvI6s_I4sYh3w6oldf60qxrsYqryev8ZsQ';
 
   /**
-   * @param httpClient httpClient
+   * @param httpClient http client
    */
   constructor(private httpClient: HttpClient) {
   }
@@ -50,10 +50,8 @@ export class SearchEngineService {
   getAutocompleteKeywords(input: string): Observable<HttpResponse<GetAutocompleteResponse>> {
     const headers: HttpHeaders = new HttpHeaders({Accept: 'application/json'});
     return this.httpClient
-      .get<GetAutocompleteResponse>(`https://cors-anywhere.herokuapp.com/unsplash.com/nautocomplete/${input.split(' ').join('%20')}`,
+      .get<GetAutocompleteResponse>(`https://secret-ocean-49799.herokuapp.com/https://unsplash.com/nautocomplete/${input.split(' ').join('%20')}`,
         {headers, observe: 'response'});
-    // return this.httpClient.get<GetAutocompleteResponse>(`https://powerful-plateau-57612.herokuapp.com/unsplash.com/nautocomplete/${input.split(' ').join('%20')}`,
-    //     {headers, observe: 'response'});
   }
 
 }
