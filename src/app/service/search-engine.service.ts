@@ -28,6 +28,11 @@ export class SearchEngineService {
   private readonly AUTOCOMPLETE_KEYWORDS_ADDRESS = 'https://secret-ocean-49799.herokuapp.com/https://unsplash.com/nautocomplete/';
 
   /**
+   * Number of itmes displayed per page.
+   */
+  private readonly ITEMS_PER_PAGE = 25;
+
+  /**
    * @param httpClient http client
    */
   constructor(private httpClient: HttpClient) {
@@ -42,7 +47,7 @@ export class SearchEngineService {
   getResponse(input: string): Observable<HttpResponse<GetSearchResultsResponse>> {
     const headers: HttpHeaders = new HttpHeaders({Accept: 'application/json'});
     return this.httpClient
-      .get<GetSearchResultsResponse>(`${this.ENDPOINT_ADDRESS + this.CLIENT_ID}&query=${input.split(' ').join('%20')}`,
+      .get<GetSearchResultsResponse>(`${this.ENDPOINT_ADDRESS + this.CLIENT_ID}&query=${input.split(' ').join('%20')}&per_page=${this.ITEMS_PER_PAGE}`,
         {headers, observe: 'response'});
   }
 

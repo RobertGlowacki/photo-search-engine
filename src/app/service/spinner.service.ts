@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 
+/**
+ * Service managing {@link NgxSpinnerService}.
+ * Allows adding multiple promise objects.
+ * If there is at least one unresolved promise spinner is shown.
+ * When the last promise gets resolved, spinner is hidden.
+ */
 @Injectable({
   providedIn: 'root'
 })
