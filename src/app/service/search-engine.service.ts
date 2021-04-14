@@ -28,7 +28,7 @@ export class SearchEngineService {
   private readonly AUTOCOMPLETE_KEYWORDS_ADDRESS = 'https://secret-ocean-49799.herokuapp.com/https://unsplash.com/nautocomplete/';
 
   /**
-   * Number of itmes displayed per page.
+   * Number of items displayed per page.
    */
   private readonly ITEMS_PER_PAGE = 25;
 

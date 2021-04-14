@@ -1,6 +1,4 @@
-<div>
-  <app-search-display *ngIf="isDisplayed" (isDisplayed)="changeDisplayCondition($event)"
-                      (inputEmitter)="emitInputValue($event)"></app-search-display>
-  <app-result-display *ngIf="!isDisplayed" [inputValue]="input"></app-result-display>
-</div>
 <ngx-spinner></ngx-spinner>
+<app-search-display *ngIf="isDisplayed" (isDisplayed)="changeDisplayCondition($event)"
+                    (inputEmitter)="emitInputValue($event)"></app-search-display>
+<app-result-display *ngIf="!isDisplayed" [inputValue]="input"></app-result-display>

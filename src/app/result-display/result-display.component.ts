@@ -26,11 +26,6 @@ export class ResultDisplayComponent implements OnInit {
   results: GetSingleResult[] = [];
 
   /**
-   * Flag is response has any results.
-   */
-  hasNoResult = false;
-
-  /**
    * @param searchEngineService service providing data from API
    * @param matDialog Mat Dialog pop up
    */

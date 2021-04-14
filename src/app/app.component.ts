@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /**
- * Aggregation component of application..
+ * Aggregation component of application.
  */
 @Component({
   selector: 'app-root',
