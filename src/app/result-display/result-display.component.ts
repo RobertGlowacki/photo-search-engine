@@ -3,6 +3,7 @@ import { SearchEngineService } from '../service/search-engine.service';
 import { GetSingleResult } from '../model/get-single-result';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ResultDetailsComponent } from '../result-details/result-details.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 /**
  * Component displaying set of results.
@@ -28,15 +29,18 @@ export class ResultDisplayComponent implements OnInit {
   /**
    * @param searchEngineService service providing data from API
    * @param matDialog Mat Dialog pop up
+   * @param spinner spinner service
    */
-  constructor(private searchEngineService: SearchEngineService, private matDialog: MatDialog) {
+  constructor(private searchEngineService: SearchEngineService, private matDialog: MatDialog, private spinner: NgxSpinnerService) {
   }
 
   /**
-   * On init data is fetch from Unsplash API. If no data is fetched some custom information occur.
+   * On init data is fetch from Unsplash API. During process of fetching data spinner is show.
    */
   ngOnInit(): void {
+    this.spinner.show();
     this.searchEngineService.getResponse(this.inputValue).subscribe(response => this.results = response.body.results);
+    this.spinner.hide();
   }
 
   /**
