@@ -39,8 +39,10 @@ export class ResultDisplayComponent implements OnInit {
    */
   ngOnInit(): void {
     this.spinner.show();
-    this.searchEngineService.getResponse(this.inputValue).subscribe(response => this.results = response.body.results);
-    this.spinner.hide();
+    this.searchEngineService.getResponse(this.inputValue).subscribe(response => {
+      this.results = response.body.results;
+      this.spinner.hide();
+    });
   }
 
   /**
