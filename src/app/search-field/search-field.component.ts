@@ -69,14 +69,17 @@ export class SearchFieldComponent implements OnInit {
     if (keywordNumber === 8 || keywordNumber === 46) {
       length -= 1;
     }
-    if (length >= 2) {
+    if (length >= 3) {
       this.searchEngineService.getAutocompleteKeywords(input).subscribe(response =>
-        response.body.autocomplete.map(result => this.autocompleteOptions.push(result.query)));
+        response.body.autocomplete.map(result => {
+          this.autocompleteOptions.push(result.query);
+        }));
+      this.autocompleteOptions = [];
     }
-    this.autocompleteOptions = [];
   }
 
   /**
+   * Method is triggered when autocomplete option is choosen.
    *
    * @param $event event object from template
    */
