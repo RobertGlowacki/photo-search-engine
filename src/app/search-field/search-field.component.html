@@ -1,13 +1,11 @@
-<div>
-  <div class="input-container">
-    <fa-icon [icon]="faSearch"></fa-icon>
-    <label for="searchFiled"></label>
-    <input matInput #input id="searchFiled" type="text" [matAutocomplete]="auto"
-           value="{{!this.inputValue ? 'Search free high-resolution photos' : this.inputValue}}"
-           onfocus="this.value = this.value === 'Search free high-resolution photos' ? '' : this.value"
-           onblur="this.value = this.value === '' ? 'Search free high-resolution photos' : this.value"
-           (keyup.enter)="onKeyEnter(input.value)" (keyup)="getKeywords(input.value, $event.keyCode)"/>
-  </div>
+<div class="input-container">
+  <fa-icon [icon]="faSearch"></fa-icon>
+  <label for="searchFiled"></label>
+  <input matInput #input id="searchFiled" type="text" [matAutocomplete]="auto"
+         value="{{!this.inputValue ? 'Search free high-resolution photos' : this.inputValue}}"
+         onfocus="this.value = this.value === 'Search free high-resolution photos' ? '' : this.value"
+         onblur="this.value = this.value === '' ? 'Search free high-resolution photos' : this.value"
+         (keyup.enter)="onKeyEnter(input.value)" (keyup)="getKeywords(input.value, $event.keyCode)"/>
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option (onSelectionChange)="onSelectionChange($event)" *ngFor="let option of autocompleteOptions"
                 [value]="option">

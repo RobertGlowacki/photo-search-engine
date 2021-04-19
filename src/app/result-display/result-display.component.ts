@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
 import { GetSingleResult } from '../model/get-single-result';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -39,7 +39,7 @@ export class ResultDisplayComponent implements OnInit {
    */
   ngOnInit(): void {
     this.spinner.show();
-    this.searchEngineService.getResponse(this.inputValue).subscribe(response => {
+    this.searchEngineService.getResponse(this.inputValue, 1).subscribe(response => {
       this.results = response.body.results;
       this.spinner.hide();
     });
@@ -78,6 +78,11 @@ export class ResultDisplayComponent implements OnInit {
     dialogConfig.data = data;
     dialogConfig.panelClass = panelClass;
     return dialogConfig;
+  }
+
+  @HostListener('app-result-display', ['$event'])
+  onScroll($event: Event): void {
+    console.log($event);
   }
 
 }

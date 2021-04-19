@@ -27,7 +27,7 @@ export class SearchFieldComponent implements OnInit {
   /**
    * List of autocomplete options.
    */
-  autocompleteOptions: string[] = [];
+  autocompleteOptions: string[];
 
   /**
    * Fontawesome icon.
@@ -59,27 +59,21 @@ export class SearchFieldComponent implements OnInit {
 
   /**
    * Get list of auto-complete keyword suggestions.
-   * Condition not to count delete and backspace as input length.
    *
    * @param input input typed by user
    * @param keywordNumber keyword number
    */
   getKeywords(input: string, keywordNumber: number): void {
-    let length = input.length;
-    if (keywordNumber === 8 || keywordNumber === 46) {
-      length -= 1;
-    }
-    if (length >= 3) {
+    this.autocompleteOptions = [];
+    if (input.length > 2) {
       this.searchEngineService.getAutocompleteKeywords(input).subscribe(response =>
-        response.body.autocomplete.map(result => {
-          this.autocompleteOptions.push(result.query);
-        }));
-      this.autocompleteOptions = [];
+        response.body.autocomplete.map(result => this.autocompleteOptions.push(result.query)
+        ));
     }
   }
 
   /**
-   * Method is triggered when autocomplete option is choosen.
+   * Method is triggered when autocomplete option is chosen.
    *
    * @param $event event object from template
    */

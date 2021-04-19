@@ -43,11 +43,12 @@ export class SearchEngineService {
    * If there is a space in input it is replaced by its UNICODE character.
    *
    * @param input input typed by user
+   * @param page page
    */
-  getResponse(input: string): Observable<HttpResponse<GetSearchResultsResponse>> {
+  getResponse(input: string, page: number): Observable<HttpResponse<GetSearchResultsResponse>> {
     const headers: HttpHeaders = new HttpHeaders({Accept: 'application/json'});
     return this.httpClient
-      .get<GetSearchResultsResponse>(`${this.ENDPOINT_ADDRESS + this.CLIENT_ID}&query=${input.split(' ').join('%20')}&per_page=${this.ITEMS_PER_PAGE}`,
+      .get<GetSearchResultsResponse>(`${this.ENDPOINT_ADDRESS + this.CLIENT_ID}&query=${input.split(' ').join('%20')}&per_page=${this.ITEMS_PER_PAGE}&page=${page}`,
         {headers, observe: 'response'});
   }
 
