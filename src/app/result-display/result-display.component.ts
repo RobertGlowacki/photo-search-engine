@@ -27,6 +27,11 @@ export class ResultDisplayComponent implements OnInit {
   results: GetSingleResult[] = [];
 
   /**
+   * Page number which is fetched form API. Initial value is 1.
+   */
+  pageNumber = 1;
+
+  /**
    * @param searchEngineService service providing data from API
    * @param matDialog Mat Dialog pop up
    * @param spinner spinner service
@@ -35,11 +40,21 @@ export class ResultDisplayComponent implements OnInit {
   }
 
   /**
-   * On init data is fetch from Unsplash API. During process of fetching data spinner is show.
+   * Method is call.
    */
   ngOnInit(): void {
+    this.fetchData(this.pageNumber);
+  }
+
+  /**
+   * Data are fetched from Unsplash API. During process of fetching data spinner is show.
+   * After bottom of the page is reached new request is called.
+   *
+   * @param pageNumber page number send it request
+   */
+  private fetchData(pageNumber: number): void {
     this.spinner.show();
-    this.searchEngineService.getResponse(this.inputValue, 1).subscribe(response => {
+    this.searchEngineService.getResponse(this.inputValue, pageNumber).subscribe(response => {
       this.results = response.body.results;
       this.spinner.hide();
     });
@@ -48,7 +63,7 @@ export class ResultDisplayComponent implements OnInit {
   /**
    * Method updates view after new input is typed by user.
    *
-   * @param input new input
+   * @param input new input typed by user
    */
   onNewSearch(input: string): string {
     this.inputValue = input;
@@ -59,10 +74,21 @@ export class ResultDisplayComponent implements OnInit {
   /**
    * Open dialog with single result data.
    *
-   * @param data data
+   * @param data data to be presented
    */
   showDetails(data: GetSingleResult): void {
     this.matDialog.open(ResultDetailsComponent, this.dialogConfig(data, ['dialog']));
+  }
+
+  /**
+   * Method listens if the bottom of the page has been reached, if yes page number is increased and another request is send.
+   */
+  @HostListener('window:scroll', ['$event'])
+  getScrollHeight(): void {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      this.pageNumber += 1;
+    }
+    this.fetchData(this.pageNumber);
   }
 
   /**
@@ -78,11 +104,6 @@ export class ResultDisplayComponent implements OnInit {
     dialogConfig.data = data;
     dialogConfig.panelClass = panelClass;
     return dialogConfig;
-  }
-
-  @HostListener('app-result-display', ['$event'])
-  onScroll($event: Event): void {
-    console.log($event);
   }
 
 }
