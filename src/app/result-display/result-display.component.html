@@ -1,10 +1,10 @@
-<div class="wrapper-result">
+<div id="header" class="wrapper-result">
   <app-search-field [inputValue]="inputValue" (inputEmitter)="onNewSearch($event)"></app-search-field>
   <section>
     <header>
       <h2 class="header">{{inputValue}}</h2>
     </header>
-    <div class="display-content" *ngFor="let result of results">
+    <div class="display-content" *ngFor="let result of results.results">
       <img (click)="showDetails(result)" src="{{result.urls.small}}"
            alt="{{result.alt_description}}">
     </div>

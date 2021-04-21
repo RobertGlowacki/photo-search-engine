@@ -1,9 +1,9 @@
-import { GetSingleResult } from './get-single-result';
+import { GetResultResponse } from './get-result-response';
 
 /**
  * Model class for search results.
  */
-export interface GetSearchResultsResponse {
+export interface GetPhotosResponse {
 
   /**
    * Total number of results.
@@ -13,11 +13,11 @@ export interface GetSearchResultsResponse {
   /**
    * Total number of pages.
    */
-  totalPages: number;
+  total_pages: number;
 
   /**
    * Array of single result.
    */
-  results: GetSingleResult[];
+  results: GetResultResponse[];
 
 }

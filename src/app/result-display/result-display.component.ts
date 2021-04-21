@@ -1,9 +1,10 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
-import { GetSingleResult } from '../model/get-single-result';
+import { GetResultResponse } from '../model/get-result-response';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ResultDetailsComponent } from '../result-details/result-details.component';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { GetPhotosResponse } from '../model/get-photos-response';
 
 /**
  * Component displaying set of results.
@@ -24,7 +25,11 @@ export class ResultDisplayComponent implements OnInit {
   /**
    * Data fetched form Unsplash API.
    */
-  results: GetSingleResult[] = [];
+  results: GetPhotosResponse = {
+    results: [],
+    total: 0,
+    total_pages: 0
+  };
 
   /**
    * Page number which is fetched form API. Initial value is 1.
@@ -40,7 +45,7 @@ export class ResultDisplayComponent implements OnInit {
   }
 
   /**
-   * Method is call.
+   * Method fetchData is call.
    */
   ngOnInit(): void {
     this.fetchData(this.pageNumber);
@@ -48,14 +53,13 @@ export class ResultDisplayComponent implements OnInit {
 
   /**
    * Data are fetched from Unsplash API. During process of fetching data spinner is show.
-   * After bottom of the page is reached new request is called.
    *
    * @param pageNumber page number send it request
    */
   private fetchData(pageNumber: number): void {
     this.spinner.show();
     this.searchEngineService.getResponse(this.inputValue, pageNumber).subscribe(response => {
-      this.results = response.body.results;
+      this.results.results.push(...response.body.results);
       this.spinner.hide();
     });
   }
@@ -76,19 +80,19 @@ export class ResultDisplayComponent implements OnInit {
    *
    * @param data data to be presented
    */
-  showDetails(data: GetSingleResult): void {
+  showDetails(data: GetResultResponse): void {
     this.matDialog.open(ResultDetailsComponent, this.dialogConfig(data, ['dialog']));
   }
 
   /**
-   * Method listens if the bottom of the page has been reached, if yes page number is increased and another request is send.
+   * Method listens if the bottom of the page has been reached, if so, page number is increased and another request is send.
    */
   @HostListener('window:scroll', ['$event'])
-  getScrollHeight(): void {
+  getBottomOfPage(): void {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       this.pageNumber += 1;
+      this.fetchData(this.pageNumber);
     }
-    this.fetchData(this.pageNumber);
   }
 
   /**

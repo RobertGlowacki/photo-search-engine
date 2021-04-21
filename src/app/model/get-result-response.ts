@@ -4,7 +4,7 @@ import { Urls } from './urls';
 /**
  * Model class for single result.
  */
-export interface GetSingleResult {
+export interface GetResultResponse {
 
   /**
    * Creation date.
