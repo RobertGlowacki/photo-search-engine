@@ -16,3 +16,15 @@ Robert Głowacki
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+### Building
+In order to build prod version use:
+
+```bash
+ng build --prod --base-href "https://robertglowacki.github.io/photo-search-engine/"
+```
+
+In order to send version to GitHub Pages
+```bash
+npx angular-cli-ghpages -- dir=dist/photo-search-engine
+```
