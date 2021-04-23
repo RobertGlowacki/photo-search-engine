@@ -7,7 +7,7 @@
          onblur="this.value = this.value === '' ? 'Search free high-resolution photos' : this.value"
          (keyup.enter)="onKeyEnter(input.value)" (keyup)="getKeywords(input.value, $event.keyCode)"/>
   <mat-autocomplete #auto="matAutocomplete">
-    <mat-option (onSelectionChange)="onSelectionChange($event)" *ngFor="let option of autocompleteOptions"
+    <mat-option (onSelectionChange)="onSelectionChange($event)" *ngFor="let option of autocompleteOptions | slice: 0: 5"
                 [value]="option">
       {{option}}
     </mat-option>
