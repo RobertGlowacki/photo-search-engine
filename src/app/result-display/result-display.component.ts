@@ -70,6 +70,11 @@ export class ResultDisplayComponent implements OnInit {
    * @param input new input typed by user
    */
   onNewSearch(input: string): string {
+    this.results = {
+      results: [],
+      total: 0,
+      total_pages: 0
+    };
     this.inputValue = input;
     this.ngOnInit();
     return this.inputValue;
