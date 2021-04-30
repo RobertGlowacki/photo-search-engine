@@ -56,8 +56,8 @@ export class SearchFieldComponent implements OnInit {
    */
   onKeyEnter(input: string): void {
     this.isDisplayed.emit(true);
-    this.inputEmitter.emit(input);
-    // this.inputService.input.next(input);
+    // this.inputEmitter.emit(input);
+    this.inputService.input.next(input);
   }
 
   /**
