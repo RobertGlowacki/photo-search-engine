@@ -5,10 +5,10 @@
       <span class="display-inline">The internet's source of <span class="underline">freely-usable-images</span>.</span>
       <span>Powered by creators everywhere.</span>
     </p>
-    <app-search-field (isDisplayed)="emitDisplayCondition($event)"
-                      (inputEmitter)="emitInputValue($event)"></app-search-field>
+    <app-search-field (isDisplayed)="emitDisplayCondition($event.valueOf())"></app-search-field>
     <p>
       <span>Trending: flower, wallpapers, backgrounds, happy, love</span>
     </p>
   </article>
 </section>
+<app-result-display *ngIf="isDisplayed"></app-result-display>

@@ -1,10 +1,11 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
 import { GetResultResponse } from '../model/get-result-response';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ResultDetailsComponent } from '../result-details/result-details.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { GetPhotosResponse } from '../model/get-photos-response';
+import { InputService } from '../service/input.service';
 
 /**
  * Component displaying set of results.
@@ -19,7 +20,6 @@ export class ResultDisplayComponent implements OnInit {
   /**
    * Input field value.
    */
-  @Input()
   inputValue: string;
 
   /**
@@ -37,18 +37,21 @@ export class ResultDisplayComponent implements OnInit {
   pageNumber = 1;
 
   /**
+   * @param inputService service providing value of input field
    * @param searchEngineService service providing data from API
    * @param matDialog Mat Dialog pop up
    * @param spinner spinner service
    */
-  constructor(private searchEngineService: SearchEngineService, private matDialog: MatDialog, private spinner: NgxSpinnerService) {
+  constructor(private inputService: InputService, private searchEngineService: SearchEngineService,
+              private matDialog: MatDialog, private spinner: NgxSpinnerService) {
+    this.inputService.input.subscribe(value => this.inputValue = value);
   }
 
   /**
    * Method fetchData is call.
    */
   ngOnInit(): void {
-    this.fetchData(this.pageNumber);
+    // this.fetchData(this.pageNumber);
   }
 
   /**
