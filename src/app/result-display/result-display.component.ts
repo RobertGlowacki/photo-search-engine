@@ -44,14 +44,14 @@ export class ResultDisplayComponent implements OnInit {
    */
   constructor(private inputService: InputService, private searchEngineService: SearchEngineService,
               private matDialog: MatDialog, private spinner: NgxSpinnerService) {
-    this.inputService.input.subscribe(value => this.inputValue = value);
   }
 
   /**
    * Method fetchData is call.
    */
   ngOnInit(): void {
-    // this.fetchData(this.pageNumber);
+    this.inputService.input.subscribe(value => this.inputValue = value);
+    this.fetchData(this.pageNumber);
   }
 
   /**

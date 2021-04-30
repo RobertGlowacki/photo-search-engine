@@ -27,6 +27,10 @@
   }
 }
 
+.not-displayed {
+  display: none;
+}
+
 .underline {
   text-decoration: underline;
 }

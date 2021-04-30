@@ -14,12 +14,6 @@ import { InputService } from '../service/input.service';
 export class SearchFieldComponent implements OnInit {
 
   /**
-   * Event emitter which push of input to parent component.
-   */
-  @Output()
-  inputEmitter = new EventEmitter<string>();
-
-  /**
    * Event emitter which push value of isDisplayed property to parent component.
    */
   @Output()
@@ -56,7 +50,6 @@ export class SearchFieldComponent implements OnInit {
    */
   onKeyEnter(input: string): void {
     this.isDisplayed.emit(true);
-    // this.inputEmitter.emit(input);
     this.inputService.input.next(input);
   }
 
@@ -64,9 +57,8 @@ export class SearchFieldComponent implements OnInit {
    * Get list of auto-complete keyword suggestions.
    *
    * @param input input typed by user
-   * @param keywordNumber keyword number
    */
-  getKeywords(input: string, keywordNumber: number): void {
+  getKeywords(input: string): void {
     this.autocompleteOptions = [];
     if (input.length > 2) {
       this.searchEngineService.getAutocompleteKeywords(input).subscribe(response =>
