@@ -4,7 +4,7 @@
 export interface User {
 
   /**
-   * User name in {@code "firstName lastName"}
+   * User name presented as "firstName lastName".
    */
   name: string;
 
@@ -14,7 +14,7 @@ export interface User {
   username: string;
 
   /**
-   * User's first name..
+   * User's first name.
    */
   firstName: string;
 

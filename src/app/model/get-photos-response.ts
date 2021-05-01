@@ -1,7 +1,7 @@
 import { GetResultResponse } from './get-result-response';
 
 /**
- * Model class for search results.
+ * Model class for photos search results.
  */
 export interface GetPhotosResponse {
 

@@ -9,7 +9,7 @@ export interface Urls {
   raw: string;
 
   /**
-   * Link for raw data.
+   * Link.
    */
   link: string;
 

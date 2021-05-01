@@ -1,12 +1,13 @@
-<section [ngClass]="isDisplayed ? '' : 'wrapper-search'">
-  <article [ngClass]="isDisplayed ? 'not-displayed' : 'search-field'">
+<section [ngClass]="isDisplayed ? 'not-displayed' : 'wrapper-search'">
+  <article [ngClass]="isDisplayed ? '' : 'display-article'">
     <h1>Unsplash</h1>
     <p>
       <span class="display-inline">The internet's source of <span class="underline">freely-usable-images</span>.</span>
-      <span>Powered by creators everywhere.</span>
-      <span>Trending: flower, wallpapers, backgrounds, happy, love</span>
+      <span class="display-inline">Powered by creators everywhere.</span>
+      <span class="free-space">Trending: flower, wallpapers, backgrounds, happy, love</span>
     </p>
   </article>
-  <app-search-field (isDisplayed)="emitDisplayCondition($event.valueOf())"></app-search-field>
 </section>
+<app-search-field [ngClass]="isDisplayed ? 'results-site' : 'main-site'"
+                  (isDisplayed)="emitDisplayCondition($event.valueOf())"></app-search-field>
 <app-result-display *ngIf="isDisplayed"></app-result-display>
