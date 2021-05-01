@@ -32,7 +32,7 @@ export class ResultDisplayComponent implements OnInit {
   };
 
   /**
-   * Page number which is fetched form API. Initial value is 1.
+   * Page number which is fetched form API with initial value.
    */
   pageNumber = 1;
 

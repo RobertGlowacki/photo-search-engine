@@ -10,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchDisplayComponent implements OnInit {
 
-  isDisplayed = false;
+  /**
+   * Value describing whether results view is displayed.
+   */
+  isViewChanged = false;
 
   constructor() {
   }
@@ -19,7 +22,7 @@ export class SearchDisplayComponent implements OnInit {
   }
 
   emitDisplayCondition(value: boolean): void {
-    this.isDisplayed = value;
+    this.isViewChanged = value;
   }
 
 }
