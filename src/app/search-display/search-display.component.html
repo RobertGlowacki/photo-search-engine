@@ -4,11 +4,10 @@
     <p>
       <span class="display-inline">The internet's source of <span class="underline">freely-usable-images</span>.</span>
       <span class="display-inline">Powered by creators everywhere.</span>
-      <app-search-field *ngIf="!isViewChanged"
-                        (isDisplayed)="emitDisplayCondition($event.valueOf())"></app-search-field>
       <span>Trending: flower, wallpapers, backgrounds, happy, love</span>
     </p>
   </article>
 </section>
-
+<app-search-field [ngClass]="isViewChanged ? 'results-site' : 'main-site'"
+                  (isDisplayed)="emitDisplayCondition($event.valueOf())"></app-search-field>
 <app-result-display *ngIf="isViewChanged"></app-result-display>

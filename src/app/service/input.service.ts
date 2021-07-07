@@ -12,13 +12,13 @@ export class InputService {
   /**
    * Input value with empty string as initial value.
    */
-  private _input: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  input: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   constructor() {
   }
 
-  get input(): BehaviorSubject<string> {
-    return this._input;
+  changeInputValue(value: string): void {
+    this.input.next(value);
   }
 
 }

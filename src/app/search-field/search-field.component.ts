@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SearchEngineService } from '../service/search-engine.service';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 import { InputService } from '../service/input.service';
@@ -32,7 +32,6 @@ export class SearchFieldComponent implements OnInit {
   /**
    * Input value.
    */
-  @Input()
   inputValue: string;
 
   /**
@@ -50,7 +49,7 @@ export class SearchFieldComponent implements OnInit {
    */
   onKeyEnter(input: string): void {
     this.isDisplayed.emit(true);
-    this.inputService.input.next(input);
+    this.inputService.changeInputValue(input);
   }
 
   /**

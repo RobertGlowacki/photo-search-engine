@@ -50,9 +50,12 @@ export class ResultDisplayComponent implements OnInit {
    * Method fetchData is call.
    */
   ngOnInit(): void {
-    this.inputService.input.subscribe(value => this.inputValue = value);
-    this.fetchData(this.pageNumber);
+    this.inputService.input.subscribe(value => {
+      this.inputValue = value;
+      this.fetchData(this.pageNumber);
+    });
   }
+
 
   /**
    * Data are fetched from Unsplash API. During process of fetching data spinner is show.
@@ -68,17 +71,6 @@ export class ResultDisplayComponent implements OnInit {
   }
 
   /**
-   * Method updates view after new input is typed by user.
-   *
-   * @param input new input typed by user
-   */
-  onNewSearch(input: string): string {
-    this.inputValue = input;
-    this.ngOnInit();
-    return this.inputValue;
-  }
-
-  /**
    * Open dialog with single result data.
    *
    * @param data data to be presented
@@ -91,7 +83,7 @@ export class ResultDisplayComponent implements OnInit {
    * Method listens if the bottom of the page has been reached, if so, page number is increased and another request is send.
    */
   @HostListener('window:scroll', ['$event'])
-  getBottomOfPage(): void {
+  isBottomOfPage(): void {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       this.pageNumber += 1;
       this.fetchData(this.pageNumber);
