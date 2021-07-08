@@ -47,12 +47,15 @@ export class ResultDisplayComponent implements OnInit {
   }
 
   /**
-   * Method fetchData is call.
+   * If input changed values method fetchData is call.
    */
   ngOnInit(): void {
     this.inputService.input.subscribe(value => {
-      this.inputValue = value;
-      this.fetchData(this.pageNumber);
+      if (value !== this.inputValue) {
+        this.results.results = [];
+        this.inputValue = value;
+        this.fetchData(this.pageNumber);
+      }
     });
   }
 
